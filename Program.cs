@@ -1,6 +1,7 @@
 ﻿//test solution 17.11.22
 //הפתרון מוצג בגרסת 22 ללא 
 using System.Diagnostics;
+using System.Numerics;
 
 
 
@@ -132,26 +133,57 @@ MainQ4B(); // קריאה לפונצקיה (בדיקה). אתם בבחינה מכ
 // משהו שלא היה קיים עד לא מזמן
 
 
-//test countDig of others:
-//static bool CountDig2(int num)
-//{
-//    Console.Write(num);
-//    int countEven = 0, countOdd = 0;
-//    int newNum = num;
-//    int lastNum = 0;
 
-//    while (newNum-lastNum>0)
-//    {
-//        Console.WriteLine(true);
-//        lastNum = newNum % 10;
-//        newNum = newNum - lastNum;
-//        if (newNum % 2 != 0)
-//            countOdd++;
-//        else
-//            countEven++;
-//    }
-//    return countEven == countOdd;
-//}
-
-//לא קשור למבחן:
+// לא קשור למבחן :
 // לולאות מקוננות
+// (מטלה 14 שאלה 3ג (אתגר
+for (int i = 1; i <= 5; i++)
+{
+  for (int j = 5 - i - 1; j >= 0; j--)
+    Console.Write("-");
+  Console.Write(i);
+  for (int j = 0; j < i; j++)
+    Console.Write("X");
+  Console.WriteLine();
+}
+
+// מטלה 14 שאלה 4 ללא קלט וללא טיפול בקטן מבין שני קלטים
+Console.WriteLine("starting a heavy operative calculation");
+BigInteger sumBig = 0;
+for (long i = 0; i <= 241235832; i++)
+  sumBig += i;
+Console.WriteLine("Done. Got: " + sumBig);
+Console.WriteLine("ended this timely loop\nNow do it quickly - Declarative thinking:");
+
+//( מטלה 14 שאלה 5 ( אתגר חשיבה דקלרטיבית 
+sumBig = 241235832;
+BigInteger big2 = 241235833;
+sumBig = sumBig * big2 / 2;
+Console.WriteLine(sumBig);
+
+// מערכים ולולאות מקוננות
+// מטלה 15 שאלה 1
+Console.WriteLine("Matala 15 Q1:");
+string[] names = new string[8];
+for (int i = 0; i < names.Length; i++)
+  names[i] = ""; // מקובל לאתחל את איברי המערך
+for (int i = 0; i < names.Length; i++)
+{
+  // קלט ובדיקה שאין חזרות
+  // נניח לדוגמא שאנחנו בקלט החמישי
+  Console.WriteLine($"input name {i}");
+  names[i] = Console.ReadLine();
+  //רוצים להשוות את השם במקום החמישי עם השמות
+  // במקומות ה-0 1 2 3 4
+  for (int j = 0; j < i; j++)
+  {
+    if (names[i] == names[j])
+    { //מצב בעייתי - לא רוצה לקלוט את השם שקלטתי
+      Console.WriteLine($"Found duplicate on i=={i}");
+      i--; // קידום לאחור יאפשר לקלוט שוב לאותו אינדקס
+      break; // אין טעם להמשיך בבדיקה
+    }
+  }
+}
+foreach (var item in names)
+  Console.WriteLine(item);
