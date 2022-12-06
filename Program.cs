@@ -106,12 +106,11 @@ static void MainQ4B()
   for (int i = 0; i < 15; i++)
   {
     int num = rnd.Next(100000, 1000000); //בני 6 ספרות
-    Console.WriteLine(num);
     //Debug.Assert(CountDig(num)==CountDig2(num));
     if (CountDig(num)) // 'בדיקת המספר בעזרת הפונקציה מסעיף א 
-      Console.WriteLine("Odd and even digits of are equal");
+      Console.WriteLine($"Odd and even digit count of {num} is equal");
     else
-      Console.WriteLine("Odd and even digits of are NOT equal");
+      Console.WriteLine($"Odd and even digit count of {num} is NOT equal");
   }
 }
 
@@ -137,6 +136,8 @@ MainQ4B(); // קריאה לפונצקיה (בדיקה). אתם בבחינה מכ
 // לא קשור למבחן :
 // לולאות מקוננות
 // (מטלה 14 שאלה 3ג (אתגר
+Console.ForegroundColor = ConsoleColor.Green;
+Console.WriteLine("\nMatala 14 Q3 gimel");
 for (int i = 1; i <= 5; i++)
 {
   for (int j = 5 - i - 1; j >= 0; j--)
@@ -148,12 +149,12 @@ for (int i = 1; i <= 5; i++)
 }
 
 // מטלה 14 שאלה 4 ללא קלט וללא טיפול בקטן מבין שני קלטים
-Console.WriteLine("starting a heavy operative calculation");
+Console.ForegroundColor = ConsoleColor.Blue;
+Console.WriteLine("\nstarting a heavy operative calculation:");
 BigInteger sumBig = 0;
-for (long i = 0; i <= 241235832; i++)
-  sumBig += i;
+//for (long i = 0; i <= 241235832; i++)   sumBig += i; // יש לבטל את ההערה כדי לראות את זה רץ
 Console.WriteLine("Done. Got: " + sumBig);
-Console.WriteLine("ended this timely loop\nNow do it quickly - Declarative thinking:");
+Console.WriteLine("ended this timely loop \n(if it ran fast then the loop is \\\\commented)\nNow do it quickly - Declarative thinking:");
 
 //( מטלה 14 שאלה 5 ( אתגר חשיבה דקלרטיבית 
 sumBig = 241235832;
@@ -163,8 +164,9 @@ Console.WriteLine(sumBig);
 
 // מערכים ולולאות מקוננות
 // מטלה 15 שאלה 1
-Console.WriteLine("Matala 15 Q1:");
-string[] names = new string[8];
+Console.ForegroundColor = ConsoleColor.Yellow;
+Console.WriteLine("\nMatala 15 Q1:");
+string[] names = new string[4]; // should be 8 
 for (int i = 0; i < names.Length; i++)
   names[i] = ""; // מקובל לאתחל את איברי המערך
 for (int i = 0; i < names.Length; i++)
@@ -187,3 +189,43 @@ for (int i = 0; i < names.Length; i++)
 }
 foreach (var item in names)
   Console.WriteLine(item);
+
+//============  תבנית לפונקציה שמקבלת מערך ומנתחת אותו ===========
+
+// תרגול כיתה 7.06  טיפול בדרך השלילה  
+// הקוד מניח שהכל בסדר והפונקציה עולה ממש תמיד
+// הבדיקה היא אם יש מצב בו היא אינה עולה 
+// false במקרה זה יוחזר 
+// true אם לא נמצאה בעייה, בסוף הפונקציה יוחזר 
+static bool IsRising(int[] arr)
+{
+  for (int i = 0; i < arr.Length - 1; i++)
+    if (arr[i] >= arr[i + 1])
+      return false; // כל הפרה של החוקיות מצדיקה עצירת הבדיקה
+                    // false והחזרת תשובה 
+
+  return true; // אם הגענו עד כאן כנראה שאין בעייה
+}
+// תכנית ראשית לבדיקה:
+Console.ForegroundColor = ConsoleColor.Red;
+
+int[] what = { 1, 3, 5, 7, 9 };
+foreach (var item in what)
+  Console.Write(item + ", ");
+Console.WriteLine("\nCheck above sequence is rising:");
+Console.WriteLine(IsRising(what)); //print the returned value from IsRising
+
+//======   תבנית לפונקציה המקבלת מערך ועובדת עליו ======
+static void Fill1(int[] arr)
+{
+  //fill in the numbers 10,20,30,40,....100
+  for (int i = 0; i < arr.Length; i++)
+    arr[i] = 10 * (i + 1);
+}
+
+int[] nums = new int[10];
+Console.ForegroundColor = ConsoleColor.Cyan;
+Console.WriteLine("\nCall a function that will fill the array:");
+Fill1(nums); // קריאה לפונקציה
+foreach (var item in nums)
+  Console.WriteLine(item); // ניתן לראות שהפונקציה שינתה את המערך
