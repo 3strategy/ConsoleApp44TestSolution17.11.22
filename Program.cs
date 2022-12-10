@@ -245,3 +245,31 @@ int[] num = new int[5];
 
 for (int i = 0; i < nums.Length; i++)
   nums[i] = x * (i + 1);
+
+//Mathala 15 Q5
+//Alef
+static int TotalTime(int hours, int mins) => hours * 60 + mins;
+//bet
+static int Tot2Times(int hours, int mins, int hours2, int mins2) =>
+  Math.Abs(TotalTime(hours, mins) - TotalTime(hours2, mins2));
+//Gimel
+Console.ForegroundColor = ConsoleColor.Red;
+Console.WriteLine("Hagasha 15 - 5 gimel");
+int max1 = int.MinValue;
+int maxDay = 0;
+for (int i = 0; i < 30; i++)
+{
+  Console.WriteLine("Enter start time and and time \nas 4 numbers");
+  int n1 = int.Parse(Console.ReadLine());
+  int n2 = int.Parse(Console.ReadLine());
+  int n3 = int.Parse(Console.ReadLine());
+  int n4 = int.Parse(Console.ReadLine());
+  int totalTime = Tot2Times(n1, n2, n3, n4);
+  if (totalTime > max1)
+  {
+    max1 = totalTime;
+    maxDay = i + 1;
+  }
+}
+Console.WriteLine($"The max work time was {max1} on day {maxDay}");
+
