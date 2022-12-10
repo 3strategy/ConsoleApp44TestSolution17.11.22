@@ -1,5 +1,6 @@
 ﻿//test solution 17.11.22
 //הפתרון מוצג בגרסת 22 ללא 
+using System;
 using System.Diagnostics;
 using System.Numerics;
 
@@ -222,6 +223,13 @@ static void Fill1(int[] arr)
   for (int i = 0; i < arr.Length; i++)
     arr[i] = 10 * (i + 1);
 }
+//1,4,9,16,25,36
+static void Fill2(int[] arr)
+{
+  //fill in the numbers 10,20,30,40,....100
+  for (int i = 0; i < arr.Length; i++)
+    arr[i] = i * i;
+}
 
 int[] nums = new int[10];
 Console.ForegroundColor = ConsoleColor.Cyan;
@@ -229,3 +237,11 @@ Console.WriteLine("\nCall a function that will fill the array:");
 Fill1(nums); // קריאה לפונקציה
 foreach (var item in nums)
   Console.WriteLine(item); // ניתן לראות שהפונקציה שינתה את המערך
+Fill2(nums); // קריאה לפונקציה
+foreach (var item in nums)
+  Console.WriteLine(item); // ניתן לראות שהפונקציה שינתה את המערך
+int x = 0;
+int[] num = new int[5];
+
+for (int i = 0; i < nums.Length; i++)
+  nums[i] = x * (i + 1);
