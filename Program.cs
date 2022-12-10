@@ -167,7 +167,7 @@ Console.WriteLine(sumBig);
 // מטלה 15 שאלה 1
 Console.ForegroundColor = ConsoleColor.Yellow;
 Console.WriteLine("\nMatala 15 Q1:");
-string[] names = new string[4]; // should be 8 
+string[] names = new string[0]; // should be 8 
 for (int i = 0; i < names.Length; i++)
   names[i] = ""; // מקובל לאתחל את איברי המערך
 for (int i = 0; i < names.Length; i++)
@@ -257,7 +257,7 @@ Console.ForegroundColor = ConsoleColor.Red;
 Console.WriteLine("Hagasha 15 - 5 gimel");
 int max1 = int.MinValue;
 int maxDay = 0;
-for (int i = 0; i < 30; i++)
+for (int i = 0; i < 0; i++)
 {
   Console.WriteLine("Enter start time and and time \nas 4 numbers");
   int n1 = int.Parse(Console.ReadLine());
@@ -272,4 +272,64 @@ for (int i = 0; i < 30; i++)
   }
 }
 Console.WriteLine($"The max work time was {max1} on day {maxDay}");
+Console.ForegroundColor = ConsoleColor.Green;
+Console.WriteLine("\n\nMatala 17 Q1");
+int[] numbers17 = { 1, 6, 6, 6, 1, 6, 1, 1, 1 };
+Mikumim(numbers17);
+Console.WriteLine("second version:");
+Mikumim2(numbers17);
+static void Mikumim(int[] arr)
+{
+  //assuming only 2 types:
+  int mispar1 = arr[0];
+  int mispar2 = 0, count1 = 0;
+  string str1 = "", str2 = "";
+  for (int i = 0; i < arr.Length; i++)
+  {
+    if (arr[i] == mispar1)
+    {
+      count1++;
+      str1 += i + ",";
+    }
+    else
+    {
+      str2 += i + ",";
+      mispar2 = arr[i];
+    }
+  }
+  if (count1 > arr.Length / 2)
+    //first num is more frequent
+    Console.WriteLine($"{mispar1} is the most frequent and appears in {str1}");
+  else
+    Console.WriteLine($"{mispar2} is the most frequent and appears in {str2}");
+
+}
+
+static void Mikumim2(int[] arr)
+{
+  //assuming only 2 types:
+  int mispar1 = arr[0];
+  int mispar2 = 0, count1 = 0;
+  foreach (int n in arr)
+    if (n == mispar1)
+      count1++;
+    else
+      mispar2 = n;
+  if (count1 > arr.Length / 2)
+  {
+    Console.WriteLine(mispar1 + "is the most frequent and its located at:");
+    for (int i = 0; i < arr.Length; i++)
+      if (arr[i] == mispar1)
+        Console.Write(i + ", ");
+  }
+  else
+  {
+    Console.WriteLine(mispar2 + "is the most frequent and its located at:");
+    for (int i = 0; i < arr.Length; i++)
+      if (arr[i] == mispar2)
+        Console.Write(i + ", ");
+  }
+}
+
+//Matala 9 Q1
 
