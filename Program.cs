@@ -332,4 +332,25 @@ static void Mikumim2(int[] arr)
 }
 
 //Matala 9 Q1
+Console.ForegroundColor = ConsoleColor.Red;
+Console.WriteLine("\n\nMatala9 Q1 grade evaluation");
+Console.WriteLine(GradeEval(79, 92, 100));
+Console.WriteLine(GradeEval(79, 92, 100));
+Console.WriteLine(GradeEval(79, 92, 100));
+static bool GradeEval(int g1, int g2, int g3)
+{
+  double avg = (g1 + g2 + g3) / 3.0;
+  if (avg > 90 && g1 >= 80 && g2 >= 80 && g3 >= 80)
+    return true;
+  return false;
+}
+
+static bool GradeEval2(int g1, int g2, int g3)
+{
+  double avg = (g1 + g2 + g3) / 3.0;
+  return avg > 90 && g1 >= 80 && g2 >= 80 && g3 >= 80;
+}
+
+static bool GradeEval3(int g1, int g2, int g3) =>
+  (g1 + g2 + g3) / 3.0 > 90 && g1 >= 80 && g2 >= 80 && g3 >= 80;
 
